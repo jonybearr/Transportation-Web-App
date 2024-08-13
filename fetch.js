@@ -45,7 +45,7 @@ async function processing(currentStop,targetRoute,routeSequence){
     //console.log(json2['data'][0]['eta'])
     let i = 0;
     for (element of json2['data'][0]['eta']){
-        const displayValue = `${element['diff']} min`
+        const displayValue = `${element['diff']} min 分钟`
         console.log("incoming buses: "+displayValue)
         document.getElementById(`bus${i}`).innerHTML = displayValue
         i++;
