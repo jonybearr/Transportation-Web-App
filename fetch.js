@@ -1,8 +1,5 @@
 console.log("running")
 
-
-
-
 //async function to fetch from url and convert to json
 async function fetchAndConvertToJson(url){
 
@@ -55,7 +52,6 @@ async function processing(currentStop,targetRoute,routeSequence){
     }
 }   
 
-// processing('龙翔道, 近牛池湾消防','11',2)
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById("query").addEventListener('click', () => {
         const stopname = document.getElementById("stopname").value;
