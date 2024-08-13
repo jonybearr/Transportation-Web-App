@@ -44,9 +44,10 @@ async function processing(currentStop,targetRoute,routeSequence){
     let url=`https://data.etagmb.gov.hk/route-stop/${targetRouteID}/${routeSequence}`
     let json1 = await fetchAndConvertToJson(url)
 
+    console.log('searching stops 路线小巴站查询: ')
     let i=0
     for(const element of json1["data"]["route_stops"]){
-        console.log('searching stops 路线小巴站查询: '+element["name_sc"])
+        console.log(element["name_sc"])
         if(element['name_sc'].includes(currentStop)){
             stopID=element['stop_id'];
             currentStop=element['name_sc']
@@ -62,10 +63,11 @@ async function processing(currentStop,targetRoute,routeSequence){
     //find ETA
     let json2=await fetchAndConvertToJson(`https://data.etagmb.gov.hk/eta/route-stop/${targetRouteID}/${stopID}`)
     //console.log(json2['data'][0]['eta'])
+    console.log("incoming arrival times 剩余时间: ")
     i = 0;
     for (element of json2['data'][0]['eta']){
         const displayValue = `${element['diff']} min 分钟`
-        console.log("incoming arrival times 剩余时间: "+displayValue)
+        console.log(displayValue)
         document.getElementById(`bus${i}`).innerHTML = displayValue
         i++;
     }
